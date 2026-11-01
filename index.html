@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#121414" />
+    <title>Patagonia · Concepto no oficial</title>
+    <meta name="description" content="Web conceptual no oficial para Cerveza Patagonia. Variedades, formatos, refugios y la cervecería en Bariloche." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- Primer fondo del recorrido. Si cambia en backgrounds.ts, cambiarlo también acá. -->
+    <link rel="preload" as="image" href="/assets/img/lago-atardecer.jpg" />
+    <!-- Va antes de pintar, para que la puerta no parpadee a quien ya entró -->
+    <script>
+      try {
+        if (sessionStorage.getItem('patagonia-age-ok') === '1') {
+          document.documentElement.classList.add('age-ok');
+        }
+      } catch (error) {}
+    </script>
+  </head>
+  <body>
+    <div id="age-gate" role="dialog" aria-modal="true" aria-labelledby="age-question">
+      <div class="age-card">
+        <p class="age-brand">PATAGONIA</p>
+        <div id="age-ask">
+          <h2 id="age-question" class="display">¿Sos mayor de 18 años?</h2>
+          <div class="age-actions">
+            <button type="button" id="age-yes" class="button">Sí</button>
+            <button type="button" id="age-no" class="button button-quiet">No</button>
+          </div>
+        </div>
+        <div id="age-denied" hidden>
+          <h2 class="display">Volvé cuando seas mayor</h2>
+          <p>Este sitio es solo para mayores de 18 años.</p>
+          <button type="button" id="age-back" class="button button-quiet">Volver</button>
+        </div>
+      </div>
+    </div>
+
+    <main id="site" inert>
+      <section id="journey" aria-label="Las variedades">
+        <div id="journey-view" data-tone="light">
+          <div id="background" aria-hidden="true"></div>
+          <canvas id="stage" role="img" aria-label="Envases de cerveza en 3D"></canvas>
+
+          <div class="journey-ui">
+            <p class="brand" id="brand">PATAGONIA</p>
+            <h1 id="hero-title" class="display">Suave como tantas, rica como Patagonia.</h1>
+            <p id="scroll-hint">Bajá para descubrir</p>
+            <div id="panels"></div>
+            <h2 id="lineup-title" class="display">Elegí tu Patagonia</h2>
+            <h2 id="formats-title" class="display">Para compartir</h2>
+            <div id="closing">
+              <h2 class="display">Vení a tu refugio</h2>
+              <a id="closing-link" class="button" href="#refugios">Ir a Refugios</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cerveceria" class="section section-snow">
+        <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 120V82L150 36l92 34 136-62 118 58 94-30 170 52 124-70 148 66 104-34 142 48 162-40V120z" />
+        </svg>
+        <div class="section-inner split">
+          <div>
+            <p class="eyebrow">Bariloche</p>
+            <h2 class="display section-title">La Cervecería</h2>
+          </div>
+          <p class="lead">
+            Patagonia nace en Bariloche, entre el lago y la montaña. Ahí está la cervecería, y de ahí
+            sale cada variedad.
+          </p>
+        </div>
+      </section>
+
+      <section id="refugios" class="section section-forest">
+        <div class="section-inner">
+          <p class="eyebrow">Dónde encontrarnos</p>
+          <h2 class="display section-title">Refugios</h2>
+          <ul class="refuge-list">
+            <li><span class="refuge-name">Palermo</span><span class="refuge-place">CABA</span></li>
+            <li><span class="refuge-name">Iguazú</span><span class="refuge-place">Misiones</span></li>
+            <li><span class="refuge-name">Ushuaia</span><span class="refuge-place">Tierra del Fuego</span></li>
+            <li><span class="refuge-name">Río Gallegos</span><span class="refuge-place">Santa Cruz</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="experiencias" class="section section-lake">
+        <div class="section-inner split">
+          <div>
+            <p class="eyebrow">Experiencias</p>
+            <h2 class="display section-title">Conocé dónde se hace</h2>
+          </div>
+          <p class="lead">Visita guiada a la cervecería, en Bariloche.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Concepto no oficial · Diseñado por Tracta Studio</p>
+    </footer>
+
+    <p class="legal">Beber con moderación. Prohibida su venta a menores de 18 años.</p>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

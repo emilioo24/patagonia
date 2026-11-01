@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Vista de prueba · Envases</title>
+  </head>
+  <body>
+    <canvas id="stage" aria-label="Lata, botella y vaso en 3D. Arrastrá para orbitar."></canvas>
+
+    <aside class="viewer-panel" aria-label="Controles de la vista de prueba">
+      <p class="viewer-title">Vista de prueba · Envases</p>
+
+      <div class="viewer-group" role="group" aria-label="Variedad" id="variety-buttons"></div>
+
+      <div class="viewer-group" role="group" aria-label="Fondo">
+        <button type="button" data-bg="lago">Lago</button>
+        <button type="button" data-bg="carbon">Carbón</button>
+        <button type="button" data-bg="nieve">Nieve</button>
+      </div>
+
+      <label class="viewer-slider">
+        Nivel de la botella
+        <input id="bottle-level" type="range" min="0" max="1" step="0.01" value="0.9" />
+      </label>
+      <label class="viewer-slider">
+        Llenado del vaso
+        <input id="glass-fill" type="range" min="0" max="1" step="0.01" value="1" />
+      </label>
+
+      <button type="button" id="toggle-profiles">Perfiles 2D</button>
+
+      <p class="viewer-hint">Arrastrá para orbitar · Rueda para acercar</p>
+    </aside>
+
+    <section id="profiles" class="profiles-panel" aria-label="Perfiles 2D"></section>
+
+    <script type="module" src="/src/testVessels.ts"></script>
+  </body>
+</html>
