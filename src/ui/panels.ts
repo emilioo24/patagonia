@@ -1,11 +1,11 @@
-import { varieties, type Variety, type VarietyId } from '../data/varieties';
+import { TODO, varieties, type Variety, type VarietyId } from '../data/varieties';
 import type { VesselKind } from '../three/vessels/types';
 
 // Lado del panel en escritorio; la lata se corre hacia el lado contrario
 const SIDES: Record<VarietyId, 'left' | 'right'> = {
-  'lager-del-sur': 'right',
-  amber: 'left',
-  kune: 'right',
+  amber: 'right',
+  km247: 'left',
+  vera: 'right',
 };
 
 const VESSEL_OPTIONS: { kind: VesselKind; name: string }[] = [
@@ -50,6 +50,7 @@ export function createVarietyPanels(container: HTMLElement, choice: VesselChoice
       ['IBU', variety.ibu],
       ['ABV', variety.abv],
     ]) {
+      if (value === TODO) continue; // lo que no está confirmado no se muestra
       const item = document.createElement('div');
       const dt = document.createElement('dt');
       const dd = document.createElement('dd');
@@ -79,7 +80,7 @@ export function createVarietyPanels(container: HTMLElement, choice: VesselChoice
     return panel;
   };
 
-  const [lager, amber, kune] = varieties.map(build);
+  const [amber, km247, vera] = varieties.map(build);
   select(choice.kind);
-  return { lager, amber, kune };
+  return { amber, km247, vera };
 }

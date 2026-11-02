@@ -2,7 +2,7 @@ import type { BackgroundId } from './backgrounds';
 
 export const TODO = 'TODO: confirmar';
 
-export type VarietyId = 'lager-del-sur' | 'amber' | 'kune';
+export type VarietyId = 'amber' | 'km247' | 'vera';
 
 export interface Variety {
   id: VarietyId;
@@ -12,48 +12,49 @@ export interface Variety {
   abv: string;
   pairing: string;
   accent: string;
-  /** Color de la cerveza en botella y vaso. No es el acento: Küné es verde solo en la lata. */
+  /** Color de la cerveza en botella y vaso. No es el acento: la 24.7 es verde solo en la lata. */
   beer: string;
   /** Si el archivo no existe, se genera la provisoria en canvas. */
   label: string;
   background: BackgroundId;
 }
 
+// Datos de las latas y de las fichas de cervezapatagonia.com.ar
 export const varieties: Variety[] = [
-  {
-    id: 'lager-del-sur',
-    name: 'Lager del Sur',
-    description: 'Suave y delicada',
-    ibu: '14',
-    abv: '5%',
-    pairing: TODO,
-    accent: '#C9A55C',
-    beer: '#E3B23C',
-    label: '/assets/labels/lager-del-sur.jpg',
-    background: 'lago',
-  },
   {
     id: 'amber',
     name: 'Amber Lager',
-    description: TODO, // la foto de referencia dice "Maltas caramelo"
-    ibu: TODO, // la foto de referencia dice 14.5
-    abv: TODO, // la foto de referencia dice 4.5%
-    pairing: TODO,
-    accent: '#B5562B',
+    description: 'Maltas caramelo',
+    ibu: '14,5',
+    abv: '4,5%',
+    pairing: 'Carnes a la parrilla, hamburguesas y postres de caramelo',
+    accent: '#B8322A',
     beer: '#A9541F',
     label: '/assets/labels/amber.jpg',
-    background: 'dorado',
+    background: 'cobre',
   },
   {
-    id: 'kune',
-    name: 'Küné',
-    description: TODO,
-    ibu: TODO,
-    abv: TODO,
-    pairing: TODO,
-    accent: '#4F7A55',
-    beer: '#D9A33A', // TODO: confirmar el color real de Küné
-    label: '/assets/labels/kune.jpg',
+    id: 'km247',
+    name: 'Kilómetro 24.7',
+    description: 'Session IPA con sauco y lúpulo patagónico',
+    ibu: '36',
+    abv: '4,5%',
+    pairing: 'Ensaladas agridulces, comida thai y cheesecake',
+    accent: '#1F6F5C',
+    beer: '#DDA83A',
+    label: '/assets/labels/km247.jpg',
     background: 'bosque',
+  },
+  {
+    id: 'vera',
+    name: 'Vera IPA',
+    description: 'New England IPA de aromas frutales',
+    ibu: '20',
+    abv: '5,8%',
+    pairing: 'Comida thai, risottos y platos especiados',
+    accent: '#E2674A',
+    beer: '#E8A33A',
+    label: '/assets/labels/vera.jpg',
+    background: 'coral',
   },
 ];

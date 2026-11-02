@@ -57,8 +57,9 @@ const TOP_PROFILE: ProfilePoint[] = [
 const PANEL_Y = 150.5;
 const PANEL_RADIUS = 20.5;
 
-// 2048x1280 es 1.6:1. Sobre los 207 mm de contorno da 130 mm de alto sin deformar.
-const LABEL_HEIGHT = 130;
+// La etiqueta cubre todo el cuerpo, hasta el cuello: 141 mm de perfil. Sobre los 207 mm
+// de contorno da 1.47:1, es decir 2048x1392 sin deformar.
+const LABEL_HEIGHT = 141;
 const LABEL_START = 2; // mm de perfil antes de que empiece la etiqueta
 
 export interface CanVessel extends Vessel {

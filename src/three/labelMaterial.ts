@@ -1,6 +1,9 @@
 import { MeshPhysicalMaterial, type Texture } from 'three';
 
-/** Material del cuerpo de la lata, con crossfade entre dos etiquetas. */
+/**
+ * Material del cuerpo de la lata, con crossfade entre dos etiquetas.
+ * Las etiquetas salen de fotos y ya traen brillos: el reflejo del entorno es bajo para no duplicarlos.
+ */
 export function createLabelMaterial(clearcoat: number) {
   const uniforms = {
     uMapB: { value: null as Texture | null },
@@ -9,10 +12,11 @@ export function createLabelMaterial(clearcoat: number) {
 
   const material = new MeshPhysicalMaterial({
     color: 0xffffff,
-    metalness: 0.6,
-    roughness: 0.35,
-    clearcoat,
-    clearcoatRoughness: 0.3,
+    metalness: 0.25,
+    roughness: 0.42,
+    envMapIntensity: 0.6,
+    clearcoat: clearcoat * 0.35,
+    clearcoatRoughness: 0.35,
   });
 
   material.onBeforeCompile = (shader) => {

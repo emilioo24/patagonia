@@ -41,18 +41,21 @@ export function startJourney() {
     onPosition: background.update,
   });
 
-  const closingLink = query<HTMLAnchorElement>('#closing-link');
-
   if (reducedMotion) {
     startReducedJourney({ timeline, state, trigger: journeySection, view, onPosition: background.update });
-    // Salta a la sección sin animar, con el enlace nativo
+    // Los enlaces internos saltan a la sección sin animar, de forma nativa
   } else {
     state.t = timeline.time();
     background.update(state.t);
     const lenis = startSmoothScroll();
-    closingLink.addEventListener('click', (event) => {
+    document.addEventListener('click', (event) => {
+      const link = (event.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');
+      const target = link && document.querySelector<HTMLElement>(link.hash);
+      if (!target) return;
       event.preventDefault();
-      lenis.scrollTo('#refugios');
+      // De lejos se salta directo, para no pasar a toda velocidad por todo el recorrido
+      const distance = Math.abs(target.getBoundingClientRect().top);
+      lenis.scrollTo(target, { immediate: distance > window.innerHeight * 3 });
     });
   }
 

@@ -41,10 +41,12 @@ Para sacarla, borrá su entrada en `vite.config.ts`.
 
 | Qué | Archivo |
 | --- | --- |
-| Datos de las variedades (los `TODO: confirmar` se ven en pantalla) | `src/data/varieties.ts` |
+| Las tres variedades del recorrido (lo marcado `TODO` no se muestra) | `src/data/varieties.ts` |
+| Catálogo de la sección Cervezas | `src/data/catalog.ts` |
+| Refugios | `src/data/refugios.ts` |
 | Fondos de cada tramo | `src/data/backgrounds.ts` |
 | Momentos del recorrido | `src/data/timeline.ts` |
-| Textos de las secciones finales | `index.html` |
+| Textos de las demás secciones, menú y redes | `index.html` |
 
 ## Agregar un fondo de tipo `frames`
 
@@ -110,7 +112,7 @@ Las posiciones de `timeline.ts` van de 0 a `JOURNEY_END` (1.5). El recorrido ocu
 | Posición | Tramo |
 | --- | --- |
 | 0 – 0.15 | Entrada |
-| 0.15 – 0.75 | Lager, Amber y Küné |
+| 0.15 – 0.75 | Amber, Km 24.7 y Vera |
 | 0.75 – 1 | Las tres en fila |
 | 1 – 1.25 | Formatos: de lata a botella |
 | 1.25 – 1.5 | Cierre: se sirve el vaso |
@@ -125,7 +127,7 @@ compilar.
 | Archivo | Tamaño | Notas |
 | --- | --- | --- |
 | `img/logo.png` | 36 px de alto en pantalla; exportá al menos a 144 px | Con transparencia. Reemplaza el texto "PATAGONIA" |
-| `labels/<archivo de la variedad>` | 2048×1280 (1.6:1) | Lata, 360°, área de 130 mm de alto. El nombre sale del campo `label` de `varieties.ts`. Los bordes izquierdo y derecho tienen que empalmar |
+| `labels/<archivo de la variedad>` | 2048×1392 (1.47:1) | Lata, 360°, con el frente en el centro horizontal. Cubre 141 mm de perfil, desde la base hasta el cuello. El nombre sale del campo `label` de `varieties.ts`. Los bordes izquierdo y derecho tienen que empalmar |
 | `labels/botella-<id>.jpg` | 1228×1000 | Etiqueta frontal de botella |
 | `labels/botella-cuello.jpg` | 1024×340 | Collarín, 360° |
 | `labels/vaso-logo.png` | 768×512 | Logo del vaso, con transparencia |

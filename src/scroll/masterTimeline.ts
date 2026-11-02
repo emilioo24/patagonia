@@ -16,8 +16,8 @@ gsap.registerPlugin(ScrollTrigger);
 const TWO_PI = Math.PI * 2;
 const TILT_START = (20 * Math.PI) / 180;
 
-// Después de cada giro la lata queda oscilando alrededor del frente
-const SWAY = 0.25;
+// Después de cada giro la lata queda oscilando apenas: el frente tiene que leerse entero
+const SWAY = 0.1;
 
 /** Inclinación de la botella al servir: 118°. */
 export const POUR_TILT = (118 * Math.PI) / 180;
@@ -32,7 +32,7 @@ export interface JourneyState {
   scale: number;
   /** Lado de la lata: -1 izquierda, 1 derecha. Deja lugar al panel. */
   shift: number;
-  /** 0 Lager, 1 Amber, 2 Küné; los decimales son el crossfade. */
+  /** 0 Amber, 1 Km 24.7, 2 Vera; los decimales son el crossfade. */
   variety: number;
   /** 0 una lata, 1 las tres en fila. */
   lineup: number;
@@ -85,7 +85,7 @@ interface TimelineTargets {
   lineupTitle: HTMLElement;
   formatsTitle: HTMLElement;
   closing: HTMLElement;
-  panels: { lager: HTMLElement; amber: HTMLElement; kune: HTMLElement };
+  panels: { amber: HTMLElement; km247: HTMLElement; vera: HTMLElement };
   onPosition(position: number): void;
 }
 
@@ -159,12 +159,12 @@ export function createMasterTimeline(targets: TimelineTargets) {
   fadeOut(targets.heroTitle, textBeats.heroOut);
   fadeOut(targets.scrollHint, textBeats.hintOut);
 
-  // 15-35%: Lager del Sur, 360° atados 1:1 al scroll
-  animate('yaw', 0, TWO_PI, segments.lager);
+  // 15-35%: Amber, una vuelta atada al scroll. El ease se detiene de frente y pasa rápido por el dorso
+  animate('yaw', 0, TWO_PI, segments.amber, 'power2.inOut');
   animate('shift', 0, -1, [0.15, 0.2], 'power1.inOut');
-  showText(panels.lager, textBeats.lager);
+  showText(panels.amber, textBeats.amber);
 
-  // 35-55%: giro rápido a Amber, con el crossfade en el punto de máxima velocidad
+  // 35-55%: giro rápido a la 24.7, con el crossfade en el punto de máxima velocidad
   const spinToVariety = (
     spin: Range,
     segmentEnd: number,
@@ -183,19 +183,19 @@ export function createMasterTimeline(targets: TimelineTargets) {
     animate('shift', shiftFrom, shiftTo, [spin[0] + 0.01, spin[1] - 0.01], 'sine.inOut');
   };
 
-  const amberFront = TWO_PI * 3;
-  const kuneFront = TWO_PI * 5;
-  spinToVariety(spins.amber, segments.amber[1], TWO_PI, amberFront, 1, -1, 1);
-  showText(panels.amber, textBeats.amber);
+  const km247Front = TWO_PI * 3;
+  const veraFront = TWO_PI * 5;
+  spinToVariety(spins.km247, segments.km247[1], TWO_PI, km247Front, 1, -1, 1);
+  showText(panels.km247, textBeats.km247);
 
-  // 55-75%: lo mismo, a Küné
-  spinToVariety(spins.kune, segments.kune[1], amberFront + SWAY, kuneFront, 2, 1, -1);
-  showText(panels.kune, textBeats.kune);
+  // 55-75%: lo mismo, a la Vera
+  spinToVariety(spins.vera, segments.vera[1], km247Front + SWAY, veraFront, 2, 1, -1);
+  showText(panels.vera, textBeats.vera);
 
   // 75-90%: la cámara se aleja y aparecen las tres
-  const rowYaw = kuneFront - 0.1;
+  const rowYaw = veraFront;
   animate('lineup', 0, 1, [0.75, 0.85], 'power2.inOut');
-  animate('yaw', kuneFront + SWAY, rowYaw, [0.75, 0.85], 'power1.inOut');
+  animate('yaw', veraFront + SWAY, rowYaw, [0.75, 0.85], 'power1.inOut');
   animate('shift', -1, 0, [0.75, 0.85], 'power1.inOut');
   showText(targets.lineupTitle, textBeats.lineup);
 
@@ -207,7 +207,7 @@ export function createMasterTimeline(targets: TimelineTargets) {
   animate('morph', 0, 1, formatsBeats.morph);
   // Gira de un lado al otro del frente: una vuelta entera escondería la etiqueta
   animate('yaw', rowYaw, rowYaw - 0.6, [segments.formats[0], 1.06], 'sine.out');
-  animate('yaw', rowYaw - 0.6, kuneFront, [1.06, segments.formats[1]], 'sine.inOut');
+  animate('yaw', rowYaw - 0.6, veraFront, [1.06, segments.formats[1]], 'sine.inOut');
   showText(targets.formatsTitle, textBeats.formats);
 
   // Cierre: sirve en el vaso, que se llena con el scroll, y la cámara se acerca

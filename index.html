@@ -37,7 +37,18 @@
       </div>
     </div>
 
-    <main id="site" inert>
+    <header class="site-header" data-gated inert>
+      <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="site-menu">Menú</button>
+      <nav id="site-menu" aria-label="Secciones">
+        <a href="#cervezas">Cervezas</a>
+        <a href="#cerveceria">Cervecería</a>
+        <a href="#experiencias">Experiencias</a>
+        <a href="#refugios">Refugios</a>
+        <a href="#conseguila">Conseguila</a>
+      </nav>
+    </header>
+
+    <main id="site" data-gated inert>
       <section id="journey" aria-label="Las variedades">
         <div id="journey-view" data-tone="light">
           <div id="background" aria-hidden="true"></div>
@@ -45,7 +56,7 @@
 
           <div class="journey-ui">
             <p class="brand" id="brand">PATAGONIA</p>
-            <h1 id="hero-title" class="display">Suave como tantas, rica como Patagonia.</h1>
+            <h1 id="hero-title" class="display">El sur se toma con calma.</h1>
             <p id="scroll-hint">Bajá para descubrir</p>
             <div id="panels"></div>
             <h2 id="lineup-title" class="display">Elegí tu Patagonia</h2>
@@ -58,48 +69,140 @@
         </div>
       </section>
 
-      <section id="cerveceria" class="section section-snow">
-        <svg class="ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <section id="cervezas" class="section section-snow has-ridge">
+        <div class="section-inner">
+          <p class="eyebrow">Nuestros productos</p>
+          <h2 class="display section-title">Cervezas</h2>
+          <ul id="beer-list" class="beer-list"></ul>
+          <p id="beer-formats" class="section-note"></p>
+        </div>
+        <svg class="ridge ridge-lake" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0 120V82L150 36l92 34 136-62 118 58 94-30 170 52 124-70 148 66 104-34 142 48 162-40V120z" />
         </svg>
+      </section>
+
+      <section id="cerveceria" class="section section-lake">
         <div class="section-inner split">
           <div>
-            <p class="eyebrow">Bariloche</p>
+            <p class="eyebrow">Bariloche, Río Negro</p>
             <h2 class="display section-title">La Cervecería</h2>
           </div>
-          <p class="lead">
-            Patagonia nace en Bariloche, entre el lago y la montaña. Ahí está la cervecería, y de ahí
-            sale cada variedad.
-          </p>
+          <div>
+            <p class="lead">“El lugar del mundo donde más fuerte late el corazón de Patagonia.”</p>
+            <p class="body-text">
+              En el Km 24,7 del Circuito Chico, entre bosques, lagos y montañas. Las líneas de colectivo 10 y 13
+              pasan por la puerta.
+            </p>
+            <div class="link-row">
+              <a class="button" href="https://www.google.com/maps/search/?api=1&query=Cerveza%20Patagonia%20Microcervecer%C3%ADa%20Bariloche" target="_blank" rel="noopener">Cómo llegar</a>
+              <a class="button button-quiet" href="https://www.cervezapatagonia.com.ar/microcerveceria08/horarios-ubicacion" target="_blank" rel="noopener">Ver horarios</a>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <section id="experiencias" class="section section-snow has-ridge">
+        <div class="section-inner">
+          <p class="eyebrow">En Bariloche</p>
+          <h2 class="display section-title">Experiencias</h2>
+          <ul class="experience-list">
+            <li>
+              <h3>Tour cervecero</h3>
+              <p>Recorré el proceso de elaboración, en la cervecería.</p>
+              <a href="https://tourcervecero.meitre.com/" target="_blank" rel="noopener">Reservar</a>
+            </li>
+            <li>
+              <h3>Salón</h3>
+              <p>Cerveza y gastronomía, con el paisaje del Circuito Chico.</p>
+              <a href="https://patagonia.meitre.com/" target="_blank" rel="noopener">Reservar</a>
+            </li>
+            <li>
+              <h3>Eventos</h3>
+              <p>Casamientos, cumpleaños y eventos corporativos a medida.</p>
+              <a href="mailto:eventos@patagoniabrewingco.com">Consultar</a>
+            </li>
+            <li>
+              <h3>Viajes</h3>
+              <p>Nieve, bosque, estepa y lagos, en un viaje personalizado con cerveza incluida.</p>
+              <a href="https://www.cervezapatagonia.com.ar/microcerveceria08/experiencia-viajes" target="_blank" rel="noopener">Conocer más</a>
+            </li>
+          </ul>
+        </div>
+        <svg class="ridge ridge-forest" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 120V82L150 36l92 34 136-62 118 58 94-30 170 52 124-70 148 66 104-34 142 48 162-40V120z" />
+        </svg>
       </section>
 
       <section id="refugios" class="section section-forest">
         <div class="section-inner">
           <p class="eyebrow">Dónde encontrarnos</p>
-          <h2 class="display section-title">Refugios</h2>
-          <ul class="refuge-list">
-            <li><span class="refuge-name">Palermo</span><span class="refuge-place">CABA</span></li>
-            <li><span class="refuge-name">Iguazú</span><span class="refuge-place">Misiones</span></li>
-            <li><span class="refuge-name">Ushuaia</span><span class="refuge-place">Tierra del Fuego</span></li>
-            <li><span class="refuge-name">Río Gallegos</span><span class="refuge-place">Santa Cruz</span></li>
-          </ul>
+          <div class="refuge-head">
+            <h2 class="display section-title">Refugios</h2>
+            <div class="refuge-tools">
+              <label for="refuge-filter">Elegí tu provincia</label>
+              <select id="refuge-filter">
+                <option value="">Todas</option>
+              </select>
+              <p id="refuge-count" aria-live="polite"></p>
+            </div>
+          </div>
+          <ul id="refuge-list" class="refuge-grid"></ul>
+          <button type="button" id="refuge-more" class="button button-quiet"></button>
         </div>
       </section>
 
-      <section id="experiencias" class="section section-lake">
+      <section id="conseguila" class="section section-gold">
         <div class="section-inner split">
           <div>
-            <p class="eyebrow">Experiencias</p>
-            <h2 class="display section-title">Conocé dónde se hace</h2>
+            <h2 class="display section-title">Conseguila</h2>
+            <p class="lead">Toda la línea, en el catálogo de Patagonia en TaDa.</p>
+            <a class="button button-dark" href="https://www.tada.com.ar/catalogo/marca/patagonia" target="_blank" rel="noopener">Ir a la tienda</a>
           </div>
-          <p class="lead">Visita guiada a la cervecería, en Bariloche.</p>
+          <div class="franchise">
+            <h3>Franquicias</h3>
+            <p>¿Te gustaría abrir un refugio Patagonia?</p>
+            <a href="https://acrobat.adobe.com/link/track?uri=urn:aaid:scds:US:292421db-01b2-30fe-a045-57c0c3df6148#pageNum=1" target="_blank" rel="noopener">Ver la información</a>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <p>Concepto no oficial · Diseñado por Tracta Studio</p>
+    <footer class="footer" data-gated inert>
+      <div class="footer-inner">
+        <div>
+          <p class="footer-title">Seguí a Patagonia</p>
+          <ul class="social-list">
+            <li>
+              <a href="https://www.instagram.com/cervezapatagonia/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle class="social-dot" cx="17.2" cy="6.8" r="1" /></svg>
+                @cervezapatagonia
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/patagonia.bariloche/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle class="social-dot" cx="17.2" cy="6.8" r="1" /></svg>
+                @patagonia.bariloche
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/patagoniacerveza/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 21v-8h3l.5-3.5H14V7.4c0-1 .4-1.7 1.8-1.7h1.8V2.6c-.5-.1-1.5-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.5v2.6H7.6V13h3v8z" /></svg>
+                Facebook
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-title">Contacto</p>
+          <a href="mailto:consultas@patagoniabrewingco.com">consultas@patagoniabrewingco.com</a>
+          <p class="footer-title footer-title-gap">Más</p>
+          <ul class="footer-links">
+            <li><a href="https://www.cervezapatagonia.com.ar/" target="_blank" rel="noopener">Sitio oficial</a></li>
+            <li><a href="https://www.cerveceriaymalteriaquilmes.com/consumo-responsable" target="_blank" rel="noopener">Consumo responsable</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-credit">Concepto no oficial · Diseñado por Tracta Studio</p>
     </footer>
 
     <p class="legal">Beber con moderación. Prohibida su venta a menores de 18 años.</p>

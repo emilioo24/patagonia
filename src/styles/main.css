@@ -355,10 +355,44 @@ html:not(.age-ok) {
   }
 }
 
-/* Secciones finales */
+/* Menú */
+.site-header {
+  position: fixed;
+  top: 16px;
+  right: clamp(16px, 4vw, 56px);
+  z-index: 20;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+#site-menu {
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 6px;
+  background: rgb(18 20 20 / 0.72);
+  backdrop-filter: blur(6px);
+}
+
+#site-menu a {
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: var(--snow);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+#site-menu a:hover {
+  background: rgb(244 241 234 / 0.14);
+}
+
+/* Secciones que siguen al recorrido */
 .section {
   position: relative;
-  padding: clamp(72px, 12vw, 168px) clamp(16px, 6vw, 96px);
+  padding: clamp(72px, 10vw, 136px) clamp(16px, 6vw, 96px);
 }
 
 .section-inner {
@@ -370,7 +404,7 @@ html:not(.age-ok) {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(24px, 6vw, 96px);
-  align-items: end;
+  align-items: start;
 }
 
 .eyebrow {
@@ -382,15 +416,55 @@ html:not(.age-ok) {
 }
 
 .section-title {
-  font-size: clamp(52px, 8.5vw, 136px);
+  font-size: clamp(52px, 8.5vw, 120px);
   text-shadow: none;
 }
 
 .lead {
   margin: 0;
-  max-width: 34ch;
-  font-size: clamp(19px, 2vw, 26px);
-  line-height: 1.45;
+  max-width: 30ch;
+  font-size: clamp(21px, 2.2vw, 30px);
+  line-height: 1.35;
+}
+
+.body-text {
+  margin: 20px 0 0;
+  max-width: 52ch;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 12px;
+}
+
+.section-note {
+  margin: 32px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* El perfil de montañas, como en la etiqueta, hace de borde con la sección que sigue */
+.has-ridge {
+  padding-bottom: clamp(120px, 16vw, 240px);
+}
+
+.ridge {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: clamp(48px, 8vw, 120px);
+}
+
+.ridge-lake {
+  fill: #245a6e;
+}
+
+.ridge-forest {
+  fill: var(--forest);
 }
 
 .section-snow {
@@ -402,18 +476,9 @@ html:not(.age-ok) {
   color: #6f5526;
 }
 
-/* El perfil de montañas, como en la etiqueta, hace de borde con la sección que sigue */
-.ridge {
-  position: absolute;
-  left: 0;
-  bottom: -1px;
-  width: 100%;
-  height: clamp(48px, 8vw, 120px);
-  fill: var(--forest);
-}
-
-.section-snow {
-  padding-bottom: clamp(120px, 18vw, 260px);
+.section-lake {
+  background: #245a6e;
+  color: var(--snow);
 }
 
 .section-forest {
@@ -426,51 +491,291 @@ html:not(.age-ok) {
   color: #e0c88f;
 }
 
-.refuge-list {
-  margin: clamp(32px, 5vw, 72px) 0 0;
+.section-gold {
+  background: var(--gold);
+  color: var(--coal);
+}
+
+.section-gold .lead {
+  margin-top: 16px;
+}
+
+/* Cervezas */
+.beer-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 16px;
+  margin: clamp(32px, 5vw, 64px) 0 0;
   padding: 0;
   list-style: none;
 }
 
-.refuge-list li {
+.beer-card {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 4px 24px;
-  padding: clamp(16px, 2vw, 28px) 0;
-  border-top: 1px solid rgb(244 241 234 / 0.25);
+  flex-direction: column;
+  padding: 22px;
+  border-top: 6px solid var(--accent);
+  border-radius: 4px;
+  background: #fff;
 }
 
-.refuge-list li:last-child {
-  border-bottom: 1px solid rgb(244 241 234 / 0.25);
-}
-
-.refuge-name {
-  font: 600 clamp(34px, 5vw, 72px) / 1.1 var(--font-title);
+.beer-tag {
+  margin: 0 0 14px;
+  color: #5c5c55;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.refuge-place {
-  font-size: clamp(15px, 1.4vw, 18px);
-  opacity: 0.85;
+.beer-name {
+  margin: 0;
+  font: 600 32px / 1.1 var(--font-title);
+  text-transform: uppercase;
 }
 
-.section-lake {
-  background: #245a6e;
-  color: var(--snow);
+.beer-style {
+  margin: 6px 0 0;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.footer {
-  padding: 32px 16px 72px;
+.beer-description {
+  margin: 14px 0 18px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.beer-specs {
+  display: flex;
+  gap: 22px;
+  margin: auto 0 0;
+  padding-top: 14px;
+  border-top: 1px solid rgb(18 20 20 / 0.14);
+}
+
+.beer-specs dt {
+  color: #5c5c55;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.beer-specs dd {
+  margin: 3px 0 0;
+  font: 500 19px var(--font-title);
+}
+
+.beer-pairing {
+  margin: 14px 0 0;
+  color: #45453f;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* Experiencias */
+.experience-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin: clamp(32px, 5vw, 64px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experience-list li {
+  padding-top: 18px;
+  border-top: 2px solid var(--coal);
+}
+
+.experience-list h3,
+.franchise h3 {
+  margin: 0;
+  font: 600 30px / 1.1 var(--font-title);
+  text-transform: uppercase;
+}
+
+.experience-list p,
+.franchise p {
+  margin: 12px 0 16px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.experience-list a,
+.franchise a {
+  color: inherit;
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+
+/* Refugios */
+.refuge-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.refuge-tools {
+  display: grid;
+  gap: 8px;
+  width: min(320px, 100%);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.refuge-tools p {
+  margin: 0;
+  font-weight: 400;
+}
+
+.refuge-tools select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid rgb(244 241 234 / 0.55);
+  border-radius: 4px;
   background: var(--coal);
   color: var(--snow);
-  font-size: 14px;
-  text-align: center;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 400;
 }
 
-.footer p {
+.refuge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 0 32px;
+  margin: clamp(28px, 4vw, 48px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.refuge-item {
+  padding: 20px 0 24px;
+  border-top: 1px solid rgb(244 241 234 / 0.28);
+}
+
+.refuge-name {
+  margin: 0 0 8px;
+  font: 600 27px / 1.1 var(--font-title);
+  text-transform: uppercase;
+}
+
+.refuge-address,
+.refuge-place,
+.refuge-note {
+  margin: 2px 0 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.refuge-note {
+  color: #e0c88f;
+}
+
+.refuge-map {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 3px 0;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+
+#refuge-more[hidden] {
+  display: none;
+}
+
+/* Conseguila */
+.button-dark {
+  background: var(--coal);
+  color: var(--snow);
+}
+
+.button-dark:hover {
+  background: var(--forest);
+}
+
+.franchise {
+  padding-top: 18px;
+  border-top: 2px solid var(--coal);
+}
+
+/* Pie */
+.footer {
+  padding: 56px clamp(16px, 6vw, 96px) 72px;
+  background: var(--coal);
+  color: var(--snow);
+  font-size: 15px;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 32px 64px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.footer a {
+  color: inherit;
+  text-underline-offset: 4px;
+}
+
+.footer-title {
+  margin: 0 0 12px;
+  color: var(--gold);
+  font: 600 19px var(--font-title);
+  text-transform: uppercase;
+}
+
+.footer-title-gap {
+  margin-top: 24px;
+}
+
+.social-list,
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
   margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+}
+
+.social-list svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+
+.social-list .social-dot,
+.social-list path {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footer-credit {
+  max-width: 1240px;
+  margin: 40px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgb(244 241 234 / 0.2);
+  font-size: 14px;
 }
 
 /* Leyenda fija, también sobre la puerta de edad */
@@ -502,7 +807,45 @@ html:not(.age-ok) {
 
   .split {
     grid-template-columns: 1fr;
-    align-items: start;
+  }
+
+  .experience-list {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .site-header {
+    top: 8px;
+    right: 12px;
+  }
+
+  #menu-toggle {
+    display: block;
+    margin-left: auto;
+    padding: 5px 12px;
+    border: 0;
+    border-radius: 4px;
+    background: rgb(18 20 20 / 0.78);
+    color: var(--snow);
+    font: 600 14px var(--font-body);
+    cursor: pointer;
+  }
+
+  #site-menu {
+    display: none;
+    flex-direction: column;
+    min-width: 180px;
+    margin-top: 6px;
+    background: rgb(18 20 20 / 0.94);
+  }
+
+  #site-menu.is-open {
+    display: flex;
+  }
+
+  #site-menu a {
+    padding: 12px;
+    font-size: 16px;
   }
 
   #hero-title {

@@ -186,9 +186,10 @@ async function drawGlassLogo(): Promise<HTMLCanvasElement> {
 }
 
 function specLine(variety: Variety): string {
-  const ibu = variety.ibu === TODO ? 'IBU' : `${variety.ibu} IBU`;
-  const abv = variety.abv === TODO ? 'ABV' : `${variety.abv} ABV`;
-  return `${ibu} · ${abv}`;
+  const specs = [];
+  if (variety.ibu !== TODO) specs.push(`${variety.ibu} IBU`);
+  if (variety.abv !== TODO) specs.push(`${variety.abv} ABV`);
+  return specs.join(' · ');
 }
 
 function drawText(

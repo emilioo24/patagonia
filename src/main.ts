@@ -16,6 +16,9 @@ async function boot() {
   await waitForAgeConfirmation();
   loadBrandLogo();
 
+  const { renderSections } = await import('./ui/sections');
+  renderSections();
+
   // El título ya está en el HTML. Después llegan el scroll y los fondos,
   // y al final Three.js, cada uno en su propio chunk.
   const { startJourney } = await import('./scroll/journey');

@@ -76,12 +76,12 @@ export async function createJourneyScene(
   await nextTask();
 
   const row: RowCan[] = [
-    { can: createCan(quality), slot: -1, rowYaw: 0.38, lift: 0, spin: 0 },
+    { can: createCan(quality), slot: -1, rowYaw: 0.2, lift: 0, spin: 0 },
     { can: createCan(quality), slot: 0, rowYaw: 0, lift: 0, spin: 0 }, // la protagonista
-    { can: createCan(quality), slot: 1, rowYaw: -0.38, lift: 0, spin: 0 },
+    { can: createCan(quality), slot: 1, rowYaw: -0.2, lift: 0, spin: 0 },
   ];
   const hero = row[1];
-  // Termina en Küné, así que Küné queda al centro y las otras salen de atrás
+  // Termina en la Vera, así que queda al centro y las otras salen de atrás
   const sideVariety = new Map<RowCan, number>([
     [row[0], 0],
     [row[2], 1],

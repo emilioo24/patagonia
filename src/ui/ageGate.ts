@@ -18,11 +18,9 @@ function remember() {
 
 /** Se resuelve cuando la persona confirma que es mayor de edad, o si ya lo hizo en esta sesión. */
 export function waitForAgeConfirmation(): Promise<void> {
-  const site = document.querySelector<HTMLElement>('#site')!;
-
   const enter = () => {
     document.documentElement.classList.add('age-ok');
-    site.inert = false;
+    for (const element of document.querySelectorAll<HTMLElement>('[data-gated]')) element.inert = false;
   };
 
   if (wasAccepted()) {

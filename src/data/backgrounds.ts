@@ -1,4 +1,4 @@
-export type BackgroundId = 'atardecer' | 'lago' | 'dorado' | 'bosque' | 'nieve';
+export type BackgroundId = 'atardecer' | 'cobre' | 'bosque' | 'coral' | 'nieve';
 
 interface Gradient {
   type: 'gradient';
@@ -11,7 +11,7 @@ type Source =
   | { type: 'image'; src: string; parallax?: number }
   | {
       type: 'frames';
-      dir: string; // /assets/video/lago → f_0001.webp...
+      dir: string; // /assets/video/bosque → f_0001.webp...
       count: number; // 180
       pad?: number; // dígitos del número; por defecto 4
       mobile?: boolean; // usa dir/mobile/ en pantallas chicas
@@ -27,9 +27,10 @@ export interface BackgroundScene {
 }
 
 const gradients = {
-  lago: { type: 'gradient', stops: ['#1B4656', '#2F6F86', '#8FB6C2'] },
+  cobre: { type: 'gradient', stops: ['#2B0E0A', '#7C2B1C', '#C9764A'] },
   dorado: { type: 'gradient', stops: ['#5B3A1E', '#C9A55C', '#F0DDB0'] },
-  bosque: { type: 'gradient', stops: ['#121414', '#2F4A3A', '#5F7F68'] },
+  bosque: { type: 'gradient', stops: ['#0C1F1A', '#1E4F40', '#5C9278'] },
+  coral: { type: 'gradient', stops: ['#D9583C', '#E8805F', '#F8D3C3'] },
   // Termina en el mismo color de la sección que sigue, para que no se note el corte
   nieve: { type: 'gradient', stops: ['#C9D3D6', '#E9E8E2', '#F4F1EA'] },
 } satisfies Record<string, Gradient>;
@@ -40,15 +41,15 @@ export const backgrounds: Record<BackgroundId, BackgroundScene> = {
     fallback: gradients.dorado,
     tone: 'light',
   },
-  lago: { source: gradients.lago, tone: 'light' },
-  dorado: { source: gradients.dorado, tone: 'dark' },
+  cobre: { source: gradients.cobre, tone: 'light' },
   bosque: { source: gradients.bosque, tone: 'light' },
+  coral: { source: gradients.coral, tone: 'dark' },
   nieve: { source: gradients.nieve, tone: 'dark' },
 
   // Para pasar a frames, solo cambia `source`:
-  // lago: {
-  //   source: { type: 'frames', dir: '/assets/video/lago', count: 180, mobile: true },
-  //   fallback: gradients.lago,
+  // bosque: {
+  //   source: { type: 'frames', dir: '/assets/video/bosque', count: 180, mobile: true },
+  //   fallback: gradients.bosque,
   //   tone: 'light',
   // },
 };
@@ -59,9 +60,9 @@ export const backgrounds: Record<BackgroundId, BackgroundScene> = {
  */
 export const backgroundTrack: { scene: BackgroundId; at: number }[] = [
   { scene: 'atardecer', at: 0 },
-  { scene: 'lago', at: 0.15 },
-  { scene: 'dorado', at: 0.41 },
-  { scene: 'bosque', at: 0.61 },
+  { scene: 'cobre', at: 0.15 },
+  { scene: 'bosque', at: 0.41 },
+  { scene: 'coral', at: 0.61 },
   { scene: 'nieve', at: 0.79 },
   { scene: 'bosque', at: 1 }, // Formatos
   { scene: 'atardecer', at: 1.25 }, // Cierre: el vaso refracta el paisaje
